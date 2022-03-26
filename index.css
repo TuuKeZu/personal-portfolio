@@ -1,0 +1,559 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+
+    font-family: 'regular';
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Tuukka Moilanen 2022 */
+
+@font-face {
+    font-family: 'thin';
+    src: url('../assets/fonts/Inconsolata-Light.ttf');
+}
+
+@font-face {
+    font-family: 'regular';
+    src: url('../assets/fonts/Inconsolata-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'bold';
+    src: url('../assets/fonts/Inconsolata-Bold.ttf');
+}
+
+:root{
+    --dark-gray: rgb(14, 14, 14);
+    --regular-gray: rgb(17, 17, 17);
+    --light-gray: rgb(20, 20, 20);
+    --lighter-gray: rgb(25, 25, 25);
+
+    --aqua-main: aqua;
+    --aqua-darker: rgb(0, 162, 255);
+    --aqua-github: #539bf5;
+    --aqua-github-lighter: #98c6ff;
+
+    --white-dark: rgba(255, 255, 255, 0.342);
+    --white-lighter: rgba(255, 255, 255, 0.507);
+}
+
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background-color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    position: absolute;
+    background-color: white;
+    width: 70%;
+    min-width: 800px;
+    max-width: 960px;
+    height: 60%;
+    max-height: 650px;
+
+    display: flex;
+    align-items: center;
+}
+
+.main .side-bar{
+    width: 50px;
+    height: 100%;
+
+    background-color: var(--regular-gray);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-bar .detail-top{
+    position: absolute;
+    top: 0;
+
+    height: 30px;
+    width: 50px;
+
+    background: linear-gradient(to right, var(--aqua-main), var(--aqua-darker));
+}
+
+.side-bar button{
+    border: none;
+    border: none;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.side-bar button div{
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.side-bar button:hover{
+    background-color: var(--light-gray) !important;
+}
+
+#ABOUT-ME{
+    background-image: url('../assets/img/about-me.png');
+}
+
+#GITHUB{
+    background-image: url('../assets/img/github.png');
+}
+
+#CONTACT-ME{
+    background-image: url('../assets/img/contact-me.png');
+}
+
+.selected{
+    background-color: var(--light-gray) !important;
+}
+
+.main .detail{
+    background-color: var(--dark-gray);
+    width: 40%;
+    min-width: 350px;
+    height: 110%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    box-shadow: 0 0 15px rgb(0, 0, 0);
+    z-index: 5;
+}
+
+.detail .gif{
+    width: 100%;
+    height: 50%;
+
+    background-size: cover;
+    background-position: center start;
+    background-repeat: no-repeat;
+    /*By xponentialdesign - https://giphy.com/gifs/motion-graphics-visuals-platonics-ehIHw10LxiiOwUhOUn*/
+    background-image: url(https://media1.giphy.com/media/ehIHw10LxiiOwUhOUn/giphy.gif?cid=790b7611c0013a86fafd687017b8a3a4638ad94fe0525937&rid=giphy.gif&ct=g);
+}
+
+.detail .gif-overlay{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--dark-gray), transparent)
+}
+
+.detail h1{
+    margin-top: 30%;
+    color: white;
+    font-size: 50px;
+    padding: 20px;
+    justify-self: flex-end;
+}
+
+.detail h2{
+    color: white;
+    font-size: 25px;
+
+    background: linear-gradient(to right, var(--aqua-main), var(--aqua-darker));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+  
+
+
+.about-me{
+    width: 100%;
+    height: auto;
+    background-color: var(--regular-gray);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.about-me h1{
+    font-size: 45px;
+    font-family: 'bold';
+
+    margin: 10px;
+    padding: 10px;
+    width: 90%;
+    text-align: left;
+    border-bottom: solid 3px var(--light-gray);
+
+    background: linear-gradient(to right, var(--aqua-main), blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about-me h5{
+    font-family: 'thin';
+    font-style: italic;
+    color: rgb(51, 51, 51);
+    width: 80%;
+    padding: 10px;
+    font-size: 15px;
+
+    transition: color .3s ease-in-out;
+}
+
+.about-me h5:hover{
+    color: rgb(66, 66, 66);
+}
+
+.about-me h4{
+    font-family: 'thin';
+    font-style: italic;
+    color: var(--white-dark);
+    width: 80%;
+    padding: 10px;
+    font-size: 20px;
+
+    transition: color .3s ease-in-out;
+}
+
+.about-me h4:hover{
+    color: var(--white-lighter);
+}
+
+.about-me .grid{
+    margin-top: 30px;
+    width: 90%;
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.grid div{
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.grid-item{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 5%;
+    width: 95%;
+    height: 90%;
+
+    background-color: var(--light-gray);
+
+    border-left: solid 3px var(--lighter-gray);
+
+    transition: background .3s ease-in-out;
+}
+
+.grid-item:hover{
+    background-color: rgb(22, 22, 22);
+}
+
+.grid-item h2{
+    font-family: 'bold';
+    font-size: 20px;
+    color: white;
+    margin: 10px;
+
+    background: linear-gradient(to right, var(--aqua-main), var(--aqua-darker));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.grid-item ul{
+    font-family: 'regular';
+    font-size: 15px;
+    color: var(--white-dark);
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    transition: color .3s ease-in-out;
+}
+
+.grid-item ul:hover{
+    color: var(--white-lighter);
+}
+
+.grid-item ul a{
+    color: white;
+}
+
+.github{
+    width: 100%;
+    height: auto;
+    background-color: var(--regular-gray);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.github h1{
+    color: white;
+    font-size: 45px;
+    font-family: 'bold';
+
+    margin: 10px;
+    padding: 10px;
+    width: 90%;
+    text-align: left;
+    border-bottom: solid 3px var(--light-gray);
+
+    background: linear-gradient(to right, var(--aqua-main), blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.github .repos{
+    width: 90%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.github .grid{
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+}
+
+.repo-item{
+    width: 95%;
+    height: 90%;
+    margin: 5%;
+    background-color: var(--light-gray);
+
+    border: solid 3px var(--lighter-gray);
+    border-radius: 5px;
+
+    transition: background .3s ease-in-out;
+}
+
+.repo-item:hover{
+    background-color: rgb(22, 22, 22);
+}
+
+.repo-item h2{
+    margin: 10px;
+    width: 90%;
+    font-family: 'bold';
+    font-size: 17px;
+    background: linear-gradient(to right, var(--aqua-main), var(--aqua-darker));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.repo-item h6{
+    font-size: 12px;
+    width: 90%;
+    padding: 5px;
+    margin: 5px;
+    
+    color: var(--white-dark);
+    padding-left: 7px;
+    
+    border-left: solid 2px var(--lighter-gray);
+    
+    transition: color .3s ease-in-out;
+}
+
+.repo-item h6:hover{
+    color: var(--white-lighter);
+}
+
+.repo-item h5{
+    font-size: 15px;
+    width: auto;
+    align-self: flex-start;
+    padding: 3px;
+    padding-left: 7px;
+    margin: 5px;
+
+
+    border-left: solid 2px var(--aqua-github);
+
+    background-color: var(--lighter-gray);
+    color: var(--aqua-github);
+
+    transition: color .3s ease-in-out, border .3s ease-in-out;
+}
+
+.repo-item h5:hover{
+    color: var(--aqua-github-lighter);
+    border-left: solid 2px var(--aqua-github-lighter);
+}
+
+.contact-me{
+    width: 100%;
+    height: auto;
+    background-color: var(--regular-gray);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact-me h1{
+    color: white;
+    font-size: 45px;
+    font-family: 'bold';
+
+    margin: 10px;
+    padding: 10px;
+    width: 90%;
+    text-align: left;
+    border-bottom: solid 3px var(--light-gray);
+
+    background: linear-gradient(to right, var(--aqua-main), blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-sheet{
+    width: 80%;
+    background-color: var(--light-gray);
+    margin: 20px;
+    padding: 10px;
+    border-left: solid 3px var(--lighter-gray);
+}
+
+.contact-me ul{
+    font-size: 20px;
+    padding: 7px;
+    color: var(--white-dark);
+}
+
+.contact-me ul span{
+    font: 20px;
+    color: white;
+}
+
+.contact-me ul a{
+    font-size: 15px;
+    font-family: 'bold';
+    background: linear-gradient(to right, var(--aqua-main), var(--aqua-darker));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.disclaimer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 10;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+@media screen and (max-width: 800px) {
+    .disclaimer{
+        display: flex;
+    }
+
+    .container{
+        display: none;
+    }
+}
