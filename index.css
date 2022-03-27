@@ -53,17 +53,17 @@ table {
 
 @font-face {
     font-family: 'thin';
-    src: url('../assets/fonts/Inconsolata-Light.ttf');
+    src: url('./assets/fonts/Inconsolata-Light.ttf');
 }
 
 @font-face {
     font-family: 'regular';
-    src: url('../assets/fonts/Inconsolata-Regular.ttf');
+    src: url('./assets/fonts/Inconsolata-Regular.ttf');
 }
 
 @font-face {
     font-family: 'bold';
-    src: url('../assets/fonts/Inconsolata-Bold.ttf');
+    src: url('./assets/fonts/Inconsolata-Bold.ttf');
 }
 
 :root{
@@ -156,15 +156,15 @@ table {
 }
 
 #ABOUT-ME{
-    background-image: url('../assets/img/about-me.png');
+    background-image: url('./assets/img/about-me.png');
 }
 
 #GITHUB{
-    background-image: url('../assets/img/github.png');
+    background-image: url('./assets/img/github.png');
 }
 
 #CONTACT-ME{
-    background-image: url('../assets/img/contact-me.png');
+    background-image: url('./assets/img/contact-me.png');
 }
 
 .selected{
@@ -332,6 +332,7 @@ table {
     border-left: solid 3px var(--lighter-gray);
 
     transition: background .3s ease-in-out;
+    z-index: 2;
 }
 
 .grid-item:hover{
@@ -366,6 +367,13 @@ table {
 
 .grid-item ul a{
     color: white;
+}
+
+.grid-item-detail{
+    position: static;
+    width: 50px;
+    height: 50px !important;
+    background-color: white;
 }
 
 .github{
@@ -548,7 +556,125 @@ table {
     color: white;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) and (min-width: 750px) {
+    .main{
+        width: 95%;
+        min-width: 250px;
+    }
+
+    .grid{
+        grid-template-columns: 100% !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .main{
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        min-width: 250px;
+        flex-direction: column;
+
+        background-color: black;
+    }
+
+    .side-bar{
+        position: fixed;
+        left: 0;
+        z-index: 3;
+    }
+
+    .main .detail{
+        position: absolute;
+        height: 650px !important;
+        min-height: 650px;
+        z-index: 0;
+        margin-left: 55px;
+    }
+
+    .about-me{
+        margin-top: 650px;
+        width: calc(100% - 40px);
+    }
+
+    .github{
+        width: calc(100% - 40px);
+    }
+
+    .contact-me{
+        width: calc(100% - 40px);
+    }
+
+    .content{
+        overflow-y: visible;
+        z-index: 2;
+        align-items: flex-end;
+    }
+
+    .grid{
+        grid-template-columns: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .grid{
+        grid-template-columns: 100% !important;
+    }
+}
+
+@media screen and (max-width: 400px) and (min-width: 250px){
+    .side-bar{
+        position: fixed;
+        width: 100% !important;
+        height: 50px !important;
+
+        flex-direction: row !important;
+
+        background-color: rgba(27, 27, 27, 0.198) !important;
+        backdrop-filter: blur(3px);
+    }
+
+    .side-bar .detail-top{
+        left: 0;
+        height: 55px;
+        width: 40px;
+    }
+
+    .side-bar button{
+        background-color: transparent !important;
+    }
+
+    .side-bar button:hover{
+        background-color: transparent !important;
+        background-color: rgba(12, 12, 12, 0.603) !important;
+    }
+
+    .selected{
+        background-color: rgba(12, 12, 12, 0.603) !important;
+        backdrop-filter: blur(3px) !important;
+        
+        border-bottom: solid 3px var(--aqua-main) !important;
+    }
+
+    .main .detail{
+        margin-left: 0 !important;
+    }
+
+
+    .about-me{
+        width: 100% !important;
+    }
+
+    .github{
+        width: 100% !important;
+    }
+
+    .contact-me{
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 250px) {
     .disclaimer{
         display: flex;
     }

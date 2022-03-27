@@ -23,13 +23,18 @@ const InitializeEffects = () => {
         {element: document.getElementById('DETAIL'), multiplier: {x: 0, y: 0.02}, offset: {x: 0, y: 0}},
     ]
 
+    const parallaxEffects = [
+        {element: document.getElementById('DETAIL'), multiplier: 0.9, offset: 0},
+    ]
+
+
     let windowSize = {width: window.innerWidth, height: window.innerWidth}
 
     document.addEventListener('resize', () => {
         reSize();
     });
 
-    document.getElementById('content').addEventListener('scroll', () => {
+    document.addEventListener('scroll', () => {
         parallaxScroll();
     });
 
@@ -38,11 +43,10 @@ const InitializeEffects = () => {
     });
 
     const parallaxScroll = () => {
-        const distance = CONTAINER.scrollTop;
+        const distance = windowSize.width <= 750 ? window.scrollY : CONTAINER.scrollTop;
         console.log(distance);
-
         parallaxEffects.forEach(effect => {
-            effect.element.style.marginBottom = `${((distance*effect.multiplier) / 2) - effect.offset}px`;
+            effect.element.style.marginTop= `${((distance*effect.multiplier) / 2) - effect.offset}px`;
         });
     }
 
