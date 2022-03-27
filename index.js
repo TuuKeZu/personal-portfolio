@@ -43,8 +43,9 @@ const InitializeEffects = () => {
     });
 
     const parallaxScroll = () => {
-        const distance = windowSize.width <= 750 ? window.scrollY : CONTAINER.scrollTop;
-        console.log(distance);
+        if(windowSize.width > 750 ) return;
+        
+        const distance = window.scrollY;
         parallaxEffects.forEach(effect => {
             effect.element.style.marginTop= `${((distance*effect.multiplier) / 2) - effect.offset}px`;
         });

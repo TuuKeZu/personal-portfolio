@@ -30,7 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-
+    background-color: black;
     font-family: 'regular';
 }
 ol, ul {
@@ -95,11 +95,11 @@ table {
 
 .main{
     position: absolute;
-    background-color: white;
+    background-color: var(--regular-gray);
     width: 70%;
     min-width: 800px;
     max-width: 960px;
-    height: 60%;
+    height: 70%;
     max-height: 650px;
 
     display: flex;
@@ -213,6 +213,7 @@ table {
 .detail h2{
     color: white;
     font-size: 25px;
+    padding: 10px;
 
     background: linear-gradient(to right, var(--aqua-main), var(--aqua-darker));
     -webkit-background-clip: text;
@@ -675,6 +676,16 @@ table {
 }
 
 @media screen and (max-width: 250px) {
+    .disclaimer{
+        display: flex;
+    }
+
+    .container{
+        display: none;
+    }
+}
+
+@media screen and (max-height: 350px) {
     .disclaimer{
         display: flex;
     }
