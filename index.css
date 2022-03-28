@@ -91,6 +91,7 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -10;
 }
 
 .main{
@@ -104,6 +105,7 @@ table {
 
     display: flex;
     align-items: center;
+    box-shadow: 0 0 15px rgb(0, 0, 0);
 }
 
 .main .side-bar{
@@ -554,6 +556,61 @@ table {
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: white;
+}
+
+#EFFECT-LIGHT{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: invert();
+    background-color: rgba(255, 255, 255, 0.027);
+    z-index: 99;
+    pointer-events: none;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+
+    transition: transform .7s ease-in-out;
+}
+
+#EFFECT-HUE{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: hue-rotate(90deg);
+    background-color: rgba(255, 255, 255, 0.027);
+    z-index: 99;
+    pointer-events: none;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+
+    transition: transform .7s ease-in-out;
+}
+
+#SWITCH{
+    position: absolute;
+    top: -30px;
+    right: 50px;
+    z-index: 20;
+
+    width: 125px;
+    height: 30px;
+    z-index: -1;
+
+    border: none;
+
+    background: linear-gradient(to right, var(--aqua-main), var(--aqua-darker));
+    -webkit-background-clip: background;
+
+    font-family: 'bold';
+    font-size: 15px;
+
+    transition: color .3s ease-in-out;
+}
+
+#SWITCH:hover{
     color: white;
 }
 

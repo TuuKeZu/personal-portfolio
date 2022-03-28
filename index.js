@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const state = {
-    selected: HTMLElement
+    selected: HTMLElement,
+    color: Number
 }
 
 const Initialize = () => {
@@ -11,13 +12,10 @@ const Initialize = () => {
     InitializeMenu();
     getRepositories();
     InitializeEffects();
-    
-    console.log('Ready!');
+    InitializeColorSchemes();
 }
 
 const InitializeEffects = () => {
-    const CONTAINER = document.getElementById('content');
-
     const floatingEffects = [
         {element: document.getElementById('MAIN'), multiplier: {x: 0.03, y: 0.03}, offset: {x: 0, y: 0}},
         {element: document.getElementById('DETAIL'), multiplier: {x: 0, y: 0.02}, offset: {x: 0, y: 0}},
@@ -106,6 +104,58 @@ const InitializeMenu = () => {
     }
 
 }
+
+const InitializeColorSchemes = () => {
+    state.color = Number.isNaN(Number.parseInt(localStorage.getItem('color-scheme'))) ? 2 : Number.parseInt(localStorage.getItem('color-scheme'));
+
+    console.log(state.color);
+    const EFFECT_LIGHT = document.getElementById('EFFECT-LIGHT');
+    const EFFECT_HUE = document.getElementById('EFFECT-HUE');
+    const SWITCH = document.getElementById('SWITCH');
+
+    const EFFECT_LABELS = [
+        'LIGHT',
+        'PINK',
+        'DARK'
+    ]
+    
+    EFFECT_LIGHT.style.display = 'unset';
+    EFFECT_HUE.style.display = 'unset';
+    
+    SWITCH.addEventListener('click', () => { state.color = state.color == 2 ? 0 : state.color + 1; switchColorScheme();});
+    
+    const switchColorScheme = () => {
+        switch (state.color) {
+            case 0:
+                setLightMode(true);
+                break;
+            case 1:
+                setLightMode(false);
+                setHueRotation(true);
+                break;
+            case 2:
+                setHueRotation(false);
+                break;
+        }
+        SWITCH.textContent = `Mode: ${EFFECT_LABELS[state.color]}`;
+        localStorage.setItem('color-scheme', state.color);
+    }
+                
+    const setLightMode = (value) => {
+        EFFECT_LIGHT.style.transform = value ? 'scaleX(1)' : 'scaleX(0)';
+
+        // Ignore global github color by setting it inverted
+        document.documentElement.style.setProperty('--aqua-github', value ? '#ac640a' : '#539bf5');
+        document.documentElement.style.setProperty('--aqua-github-lighter', value ? '#673900' : '#98c6ff');
+    }
+    
+    const setHueRotation = (value) => {
+        EFFECT_HUE.style.transform = value ? 'scaleX(1)' : 'scaleX(0)';
+    }
+
+    switchColorScheme();
+}
+
 
 const getRepositories = async () => {
     const count = 12;
